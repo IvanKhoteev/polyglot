@@ -18,7 +18,7 @@ module Phrases
         end
 
         def create_phrase_for_you
-          word.phrases.create ru: "Ты #{ru['past_you']}", en: "You #{en['specific_past_statement']}"
+          word.phrases.create ru: "Вы #{ru['past_you']}", en: "You #{en['specific_past_statement']}"
         end
 
         def create_phrase_for_we

@@ -18,7 +18,7 @@ module Phrases
         end
 
         def create_phrase_for_you
-          word.phrases.create ru: "Ты не #{ru['future_you']}", en: "You will not #{en['common']}"
+          word.phrases.create ru: "Вы не #{ru['future_you']}", en: "You will not #{en['common']}"
         end
 
         def create_phrase_for_we

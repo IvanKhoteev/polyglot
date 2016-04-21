@@ -14,4 +14,8 @@ ActiveAdmin.register Word do
   collection_action :add_new_word, method: :get do
     render 'admin/words/add_new_word'
   end
+
+  action_item :add_new_word, only: :index do
+    link_to 'Add new word', add_new_word_admin_words_path
+  end
 end
