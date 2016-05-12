@@ -16,4 +16,5 @@
 
 class Phrase < ActiveRecord::Base
   belongs_to :word
+  has_many :personal_pronouns
 end

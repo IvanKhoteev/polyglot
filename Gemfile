@@ -13,6 +13,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'active_interaction'
 gem 'puma'
 
+# Translate text
+gem 'yandex-translator'
+
 # Annotate models
 gem 'annotate'
 

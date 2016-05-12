@@ -4,9 +4,13 @@ class WordsController < ApplicationController
     redirect_to admin_words_path
   end
 
+  def update
+    # Words::Update.run(wordset: params[:wordset]).result
+    redirect_to admin_words_path
+  end
+
   def show
-    word = Word.find(params[:id])
-    @phrase = word.phrases.sample
+    @phrase = Phrase.all.sample
   end
 
   def check
