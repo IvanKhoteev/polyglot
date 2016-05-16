@@ -20,7 +20,7 @@ ActiveAdmin.register Phrase do
       f.input :en
       f.input :lesson_identifier,
               as: :select,
-              collection: Phrase.pluck(:lesson_identifier).uniq
+              collection: -> { Phrase.pluck(:lesson_identifier).uniq }
     end
 
     f.actions
@@ -28,5 +28,5 @@ ActiveAdmin.register Phrase do
 
   filter :lesson_identifier,
          as: :select,
-         collection: Phrase.pluck(:lesson_identifier).uniq
+         collection: -> { Phrase.pluck(:lesson_identifier).uniq }
 end
