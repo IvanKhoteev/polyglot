@@ -21,9 +21,12 @@ ActiveAdmin.register Phrase do
       f.input :lesson_identifier,
               as: :select,
               collection: Phrase.pluck(:lesson_identifier).uniq
-                .zip(Phrase.pluck(:lesson_identifier).uniq.zip(Phrase.pluck(:lesson_identifier).uniq))
     end
 
     f.actions
   end
+
+  filter :lesson_identifier,
+         as: :select,
+         collection: Phrase.pluck(:lesson_identifier).uniq
 end

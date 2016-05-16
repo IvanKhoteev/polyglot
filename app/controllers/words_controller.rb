@@ -10,7 +10,8 @@ class WordsController < ApplicationController
   end
 
   def show
-    @phrase = Phrase.all.sample
+    @phrase = Phrase.where(lesson_identifier: params[:lesson_identifier]).sample
+    redirect_to root_path if @phrase.blank?
   end
 
   def check

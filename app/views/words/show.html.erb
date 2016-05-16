@@ -1,3 +1,3 @@
 <h1><%= @phrase.ru %></h1>
 <h7><%= @phrase.word.word %></h7>
-<p><%= link_to 'Check', { controller: :words, action: :check, phrase_id: @phrase.id}, style: 'font-size: 24px;' %></td></p>
+<p><%= link_to 'Check', { controller: :words, action: :check, phrase_id: @phrase.id, lesson_identifier: params[:lesson_identifier]}, style: 'font-size: 24px;' %></td></p>
