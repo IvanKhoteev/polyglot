@@ -33,6 +33,8 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'active_admin_theme'
 gem 'russian'
 
+gem 'rails_12factor', group: :production
+
 group :console do
   gem 'awesome_print'
   gem 'hirb'
