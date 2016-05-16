@@ -26,25 +26,30 @@ module Phrases
       string :specific_present_statement
       string :specific_past_statement
     end
+    array :interrogatives, default: nil
 
     def execute
-      create_present_statement_phrases
-      create_future_statement_phrases
-      create_past_statement_phrases
+      create_statements_phrases
+      create_negatives_phrases
+      create_questions_phrases
     end
 
     private
 
-    def create_present_statement_phrases
-      Phrases::Present::Create.run word: word, en: en, ru: ru
+    def create_statements_phrases
+      Phrases::Statements::Create.run data
     end
 
-    def create_future_statement_phrases
-      Phrases::Future::Create.run word: word, en: en, ru: ru
+    def create_negatives_phrases
+      Phrases::Negatives::Create.run data
     end
 
-    def create_past_statement_phrases
-      Phrases::Past::Create.run word: word, en: en, ru: ru
+    def create_questions_phrases
+      Phrases::Questions::Create.run data
+    end
+
+    def data
+      { word: word, en: en, ru: ru, interrogatives: interrogatives }
     end
   end
 end

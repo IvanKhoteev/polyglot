@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429053159) do
+ActiveRecord::Schema.define(version: 20160516062141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20160429053159) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
+  create_table "interrogatives", force: :cascade do |t|
+    t.string   "ru"
+    t.string   "en"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "personal_pronouns", force: :cascade do |t|
     t.string   "ru_who"
     t.string   "ru_whom"
@@ -44,8 +51,9 @@ ActiveRecord::Schema.define(version: 20160429053159) do
     t.integer  "word_id"
     t.string   "ru"
     t.string   "en"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "lesson_identifier", null: false
   end
 
   add_index "phrases", ["word_id"], name: "index_phrases_on_word_id", using: :btree

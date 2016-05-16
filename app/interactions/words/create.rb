@@ -27,11 +27,17 @@ module Words
         string :specific_present_statement
         string :specific_past_statement
       end
+      hash :interrogatives do
+        string :interrogatives, default: nil
+      end
     end
 
     def execute
       word = Word.create(word: wordset['word'])
-      Phrases::Create.run word: word, ru: wordset['ru'], en: wordset['en']
+      Phrases::Create.run word: word,
+                          ru: wordset['ru'],
+                          en: wordset['en'],
+                          interrogatives: wordset['interrogatives']['interrogatives'].split(',')
     end
   end
 end

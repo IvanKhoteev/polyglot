@@ -31,6 +31,9 @@
           <%= ru.input :future_he %>
           <%= ru.input :future_she %>
         <% end %>
+        <%= f.inputs 'Interrogatives', for: :interrogatives do |ru| %>
+          <%= ru.input :interrogatives %>
+        <% end %>
         <%= f.actions do %>
           <%= f.action :submit, :as => :button %>
         <% end %>

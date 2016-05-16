@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: interrogatives
+#
+#  id         :integer          not null, primary key
+#  ru         :string
+#  en         :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ru: MyString
+  en: MyString
+
+two:
+  ru: MyString
+  en: MyString
