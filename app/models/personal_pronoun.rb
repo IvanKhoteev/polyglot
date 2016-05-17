@@ -12,4 +12,5 @@
 #
 
 class PersonalPronoun < ActiveRecord::Base
+  validates :ru_who, :ru_whom, :en_who, :en_whom, presence: true
 end

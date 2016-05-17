@@ -10,4 +10,5 @@
 #
 
 class Interrogative < ActiveRecord::Base
+  validates :en, :ru, presence: true
 end

@@ -10,4 +10,6 @@
 
 class Word < ActiveRecord::Base
   has_many :phrases, dependent: :destroy
+
+  validates :word, presence: true
 end

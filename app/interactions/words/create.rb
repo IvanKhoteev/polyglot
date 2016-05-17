@@ -3,24 +3,78 @@ module Words
     hash :wordset do
       string :word
       hash :ru do
-        string :present_i
-        string :present_you
-        string :present_we
-        string :present_they
-        string :present_he
-        string :present_she
-        string :past_i
-        string :past_you
-        string :past_we
-        string :past_they
-        string :past_he
-        string :past_she
-        string :future_i
-        string :future_you
-        string :future_we
-        string :future_they
-        string :future_he
-        string :future_she
+        hash :present_i do
+          string :word
+          array :pronouns
+        end
+        hash :present_you do
+          string :word
+          array :pronouns
+        end
+        hash :present_we do
+          string :word
+          array :pronouns
+        end
+        hash :present_they do
+          string :word
+          array :pronouns
+        end
+        hash :present_he do
+          string :word
+          array :pronouns
+        end
+        hash :present_she do
+          string :word
+          array :pronouns
+        end
+        hash :past_i do
+          string :word
+          array :pronouns
+        end
+        hash :past_you do
+          string :word
+          array :pronouns
+        end
+        hash :past_we do
+          string :word
+          array :pronouns
+        end
+        hash :past_they do
+          string :word
+          array :pronouns
+        end
+        hash :past_he do
+          string :word
+          array :pronouns
+        end
+        hash :past_she do
+          string :word
+          array :pronouns
+        end
+        hash :future_i do
+          string :word
+          array :pronouns
+        end
+        hash :future_you do
+          string :word
+          array :pronouns
+        end
+        hash :future_we do
+          string :word
+          array :pronouns
+        end
+        hash :future_they do
+          string :word
+          array :pronouns
+        end
+        hash :future_he do
+          string :word
+          array :pronouns
+        end
+        hash :future_she do
+          string :word
+          array :pronouns
+        end
       end
       hash :en do
         string :common
@@ -28,16 +82,21 @@ module Words
         string :specific_past_statement
       end
       hash :interrogatives do
-        string :interrogatives, default: nil
+        array :interrogatives, default: nil
       end
     end
 
     def execute
       word = Word.create(word: wordset['word'])
-      Phrases::Create.run word: word,
-                          ru: wordset['ru'],
-                          en: wordset['en'],
-                          interrogatives: wordset['interrogatives']['interrogatives'].split(',')
+      Phrases::Create.run data.merge(word: word)
+    end
+
+    private
+
+    def data
+      { ru: wordset['ru'],
+        en: wordset['en'],
+        interrogatives: wordset['interrogatives']['interrogatives'][1..-1] }
     end
   end
 end

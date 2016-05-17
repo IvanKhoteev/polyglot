@@ -12,7 +12,7 @@ module Phrases
       private
 
       def input(tag)
-        ru[tag].split('-')
+        [ru[tag]['word'], ru[tag]['pronouns'][1..-1]]
       end
 
       def data

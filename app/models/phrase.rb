@@ -16,7 +16,7 @@
 #
 
 class Phrase < ActiveRecord::Base
-  belongs_to :word
+  belongs_to :word, required: true
   has_many :personal_pronouns
-  validates :lesson_identifier, presence: true
+  validates :ru, :en, :lesson_identifier, presence: true
 end

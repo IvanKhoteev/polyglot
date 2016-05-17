@@ -4,15 +4,15 @@ module Phrases
       def execute
         data.each do |tense_data|
           tense_data.values[0].each do |data|
-            create_phrases(input("#{tense_data.keys[0]}_#{data[:en].split[0].downcase}"), data)
+            create_phrases(ru_word("#{tense_data.keys[0]}_#{data[:en].split[0].downcase}"), data)
           end
         end
       end
 
       private
 
-      def input(tag)
-        ru[tag].split('-')
+      def ru_word(tag)
+        [ru[tag]['word'], ru[tag]['pronouns'][1..-1]]
       end
 
       def data
