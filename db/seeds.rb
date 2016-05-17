@@ -1,7 +1,22 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+PersonalPronoun.find_or_create_by(ru_who: 'они', ru_whom: 'их', en_who: 'they', en_whom: 'them')
+PersonalPronoun.find_or_create_by(ru_who: 'они', ru_whom: 'им', en_who: 'they', en_whom: 'them')
+PersonalPronoun.find_or_create_by(ru_who: 'мы', ru_whom: 'нам', en_who: 'we', en_whom: 'us')
+PersonalPronoun.find_or_create_by(ru_who: 'она', ru_whom: 'ей', en_who: 'she', en_whom: 'her')
+PersonalPronoun.find_or_create_by(ru_who: 'он', ru_whom: 'ему', en_who: 'he', en_whom: 'him')
+PersonalPronoun.find_or_create_by(ru_who: 'вы', ru_whom: 'вам', en_who: 'you', en_whom: 'you')
+PersonalPronoun.find_or_create_by(ru_who: 'ты', ru_whom: 'тебе', en_who: 'you', en_whom: 'you')
+PersonalPronoun.find_or_create_by(ru_who: 'он', ru_whom: 'его', en_who: 'he', en_whom: 'him')
+PersonalPronoun.find_or_create_by(ru_who: 'она', ru_whom: 'её', en_who: 'she', en_whom: 'her')
+PersonalPronoun.find_or_create_by(ru_who: 'мы', ru_whom: 'нас', en_who: 'we', en_whom: 'us')
+PersonalPronoun.find_or_create_by(ru_who: 'ты', ru_whom: 'тебя', en_who: 'you', en_whom: 'you')
+PersonalPronoun.find_or_create_by(ru_who: 'вы', ru_whom: 'вас', en_who: 'you', en_whom: 'you')
+PersonalPronoun.find_or_create_by(ru_who: 'я', ru_whom: 'меня', en_who: 'i', en_whom: 'me')
+PersonalPronoun.find_or_create_by(ru_who: 'я', ru_whom: 'мне', en_who: 'i', en_whom: 'me')
+Interrogative.find_or_create_by(ru: 'Что', en: 'What')
+Interrogative.find_or_create_by(ru: 'Какой', en: 'What')
+Interrogative.find_or_create_by(ru: 'Кто', en: 'Who')
+Interrogative.find_or_create_by(ru: 'Где', en: 'Where')
+Interrogative.find_or_create_by(ru: 'Куда', en: 'Where')
+Interrogative.find_or_create_by(ru: 'Когда', en: 'When')
+Interrogative.find_or_create_by(ru: 'Зачем', en: 'Why')
+Interrogative.find_or_create_by(ru: 'Почему', en: 'Why')

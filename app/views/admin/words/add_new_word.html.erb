@@ -1,3 +1,4 @@
+<% pronouns = PersonalPronoun.all.map(&:ru_whom) %>
 <div id="active_admin_content" class="without_sidebar">
   <div id="main_content_wrapper">
     <div id="main_content">
@@ -11,27 +12,81 @@
           <%= en.input :specific_past_statement %>
         <% end %>
         <%= f.inputs 'Russian', for: :ru do |ru| %>
-          <%= ru.input :present_i %>
-          <%= ru.input :present_you %>
-          <%= ru.input :present_we %>
-          <%= ru.input :present_they %>
-          <%= ru.input :present_he %>
-          <%= ru.input :present_she %>
-          <%= ru.input :past_i %>
-          <%= ru.input :past_you %>
-          <%= ru.input :past_we %>
-          <%= ru.input :past_they %>
-          <%= ru.input :past_he %>
-          <%= ru.input :past_she %>
-          <%= ru.input :future_i %>
-          <%= ru.input :future_you %>
-          <%= ru.input :future_we %>
-          <%= ru.input :future_they %>
-          <%= ru.input :future_he %>
-          <%= ru.input :future_she %>
+          <%= ru.inputs 'Present I', for: :present_i do |present_i| %>
+            <%= present_i.input :word %>
+            <%= present_i.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Present You', for: :present_you do |present_you| %>
+            <%= present_you.input :word %>
+            <%= present_you.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Present We', for: :present_we do |present_we| %>
+            <%= present_we.input :word %>
+            <%= present_we.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Present They', for: :present_they do |present_they| %>
+            <%= present_they.input :word %>
+            <%= present_they.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Present He', for: :present_he do |present_he| %>
+            <%= present_he.input :word %>
+            <%= present_he.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Present She', for: :present_she do |present_she| %>
+            <%= present_she.input :word %>
+            <%= present_she.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Past I', for: :past_i do |past_i| %>
+            <%= past_i.input :word %>
+            <%= past_i.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Past You', for: :past_you do |past_you| %>
+            <%= past_you.input :word %>
+            <%= past_you.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Past We', for: :past_we do |past_we| %>
+            <%= past_we.input :word %>
+            <%= past_we.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Past They', for: :past_they do |past_they| %>
+            <%= past_they.input :word %>
+            <%= past_they.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Past He', for: :past_he do |past_he| %>
+            <%= past_he.input :word %>
+            <%= past_he.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Past She', for: :past_she do |past_she| %>
+            <%= past_she.input :word %>
+            <%= past_she.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Future I', for: :future_i do |future_i| %>
+            <%= future_i.input :word %>
+            <%= future_i.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Future You', for: :future_you do |future_you| %>
+            <%= future_you.input :word %>
+            <%= future_you.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Future We', for: :future_we do |future_we| %>
+            <%= future_we.input :word %>
+            <%= future_we.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Future They', for: :future_they do |future_they| %>
+            <%= future_they.input :word %>
+            <%= future_they.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Future He', for: :future_he do |future_he| %>
+            <%= future_he.input :word %>
+            <%= future_he.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
+          <%= ru.inputs 'Future She', for: :future_she do |future_she| %>
+            <%= future_she.input :word %>
+            <%= future_she.input :pronouns, as: :check_boxes, collection: pronouns %>
+          <% end %>
         <% end %>
         <%= f.inputs 'Interrogatives', for: :interrogatives do |ru| %>
-          <%= ru.input :interrogatives %>
+          <%= ru.input :interrogatives, as: :check_boxes, collection: Interrogative.all.map(&:ru) %>
         <% end %>
         <%= f.actions do %>
           <%= f.action :submit, :as => :button %>
