@@ -1,5 +1,4 @@
 ActiveAdmin.register Word do
-  actions :index
   config.filters = false
 
   index do
@@ -8,9 +7,7 @@ ActiveAdmin.register Word do
     column :phrases do |word|
       link_to 'Word phrases', admin_word_phrases_path(word)
     end
-    actions do |word|
-      item 'Edit', edit_word_admin_word_path(word)
-    end
+    actions
   end
 
   collection_action :add_new_word, method: :get do

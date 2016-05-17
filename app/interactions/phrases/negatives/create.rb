@@ -54,7 +54,7 @@ module Phrases
       end
 
       def create_lesson_2_pronoun(phrase, personal_pronouns)
-        personal_pronouns.split(',').each do |personal_pronoun|
+        personal_pronouns.each do |personal_pronoun|
           en_whom = PersonalPronoun.find_by(ru_whom: personal_pronoun).try(:en_whom)
           next if en_whom.blank?
           word.phrases.create ru: "#{phrase.ru} #{personal_pronoun}",
