@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'main#index'
 
-  resource :word, only: [:create, :show, :update] do
-    get ':phrase_id/check', action: :check
-  end
+  resources :words, only: [:create, :show, :update]
+  get 'words/:phrase_id/check', to: 'words#check', as: :check_phrase
+
+  resources :phrases, only: [:destroy]
 end

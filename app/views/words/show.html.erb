@@ -1,3 +1,7 @@
 <h1><%= @phrase.ru %></h1>
 <h7><%= @phrase.word.word %></h7>
-<p><%= link_to 'Check', { controller: :words, action: :check, phrase_id: @phrase.id, lesson_identifier: params[:lesson_identifier]}, style: 'font-size: 24px;' %></td></p>
+<br />
+<br />
+<h7><%= link_to 'Click here', phrase_path(id: @phrase.id, lesson_identifier: params[:lesson_identifier]), method: :delete, data: {confirm: "Are you sure?"} %>, if it sounds ridiculous</h7>
+<br />
+<p><%= link_to 'Check', check_phrase_path(phrase_id: @phrase.id, lesson_identifier: params[:lesson_identifier]), style: 'font-size: 24px;' %></td></p>
