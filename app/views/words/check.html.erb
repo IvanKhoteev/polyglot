@@ -1,6 +1,7 @@
 <h1><%= @phrase.en %></h1>
-<h7><%= @phrase.word.word %></h7>
+<h7>Word: <%= @phrase.word.word %></h7>
 <br />
 <br />
 <br />
 <p><%= link_to 'Start', word_path(id: 0, lesson_identifier: params[:lesson_identifier]), style: 'font-size: 24px;' %></td></p>
+<p><%= link_to 'Go to main page', root_path %></td></p>
