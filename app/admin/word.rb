@@ -1,4 +1,5 @@
 ActiveAdmin.register Word do
+  actions :all, except: [:new, :create]
   config.filters = false
 
   index do

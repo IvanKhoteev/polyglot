@@ -4,16 +4,12 @@ module Phrases
       def execute
         data.each do |tense_data|
           tense_data.values[0].each do |data|
-            create_phrases(input("#{tense_data.keys[0]}_#{data[:en].split[0].downcase}"), data)
+            create_phrases("#{tense_data.keys[0]}_#{data[:en].split[0].downcase}", data)
           end
         end
       end
 
       private
-
-      def input(tag)
-        [ru[tag]['word'], ru[tag]['pronouns'][1..-1]]
-      end
 
       def data
         [{ present: present_data }, { past: past_data }, { future: future_data }]
@@ -47,16 +43,20 @@ module Phrases
       end
 
       def create_phrases(input, data)
-        phrase = word.phrases.create ru: "#{data[:ru]} #{input[0]}",
+        phrase = word.phrases.create ru: "#{data[:ru]} #{ru[input]}",
                                      en: "#{data[:en]} #{data[:en_verb]}",
                                      lesson_identifier: 'lesson_1'
-        create_lesson_2_pronoun(phrase, input[1]) if input[1].present?
+        personal_pronouns = pronouns(input.split('_')[1])
+        create_lesson_2_pronoun(phrase, personal_pronouns) if personal_pronouns.present?
+      end
+
+      def pronouns(key)
+        personal_pronouns[personal_pronouns.keys.select { |pronoun| pronoun.include?(key) }.first]
       end
 
       def create_lesson_2_pronoun(phrase, personal_pronouns)
         personal_pronouns.each do |personal_pronoun|
           en_whom = PersonalPronoun.find_by(ru_whom: personal_pronoun).try(:en_whom)
-          next if en_whom.blank?
           word.phrases.create ru: "#{phrase.ru} #{personal_pronoun}",
                               en: "#{phrase.en} #{en_whom}",
                               lesson_identifier: 'lesson_2_pronoun'

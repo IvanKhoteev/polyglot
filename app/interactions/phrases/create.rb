@@ -2,83 +2,36 @@ module Phrases
   class Create < ActiveInteraction::Base
     object :word
     hash :ru do
-      hash :present_i do
-        string :word
-        array :pronouns
-      end
-      hash :present_you do
-        string :word
-        array :pronouns
-      end
-      hash :present_we do
-        string :word
-        array :pronouns
-      end
-      hash :present_they do
-        string :word
-        array :pronouns
-      end
-      hash :present_he do
-        string :word
-        array :pronouns
-      end
-      hash :present_she do
-        string :word
-        array :pronouns
-      end
-      hash :past_i do
-        string :word
-        array :pronouns
-      end
-      hash :past_you do
-        string :word
-        array :pronouns
-      end
-      hash :past_we do
-        string :word
-        array :pronouns
-      end
-      hash :past_they do
-        string :word
-        array :pronouns
-      end
-      hash :past_he do
-        string :word
-        array :pronouns
-      end
-      hash :past_she do
-        string :word
-        array :pronouns
-      end
-      hash :future_i do
-        string :word
-        array :pronouns
-      end
-      hash :future_you do
-        string :word
-        array :pronouns
-      end
-      hash :future_we do
-        string :word
-        array :pronouns
-      end
-      hash :future_they do
-        string :word
-        array :pronouns
-      end
-      hash :future_he do
-        string :word
-        array :pronouns
-      end
-      hash :future_she do
-        string :word
-        array :pronouns
-      end
+      string :present_i
+      string :present_you
+      string :present_we
+      string :present_they
+      string :present_he
+      string :present_she
+      string :past_i
+      string :past_you
+      string :past_we
+      string :past_they
+      string :past_he
+      string :past_she
+      string :future_i
+      string :future_you
+      string :future_we
+      string :future_they
+      string :future_he
+      string :future_she
     end
     hash :en do
       string :common
       string :specific_present_statement
       string :specific_past_statement
+    end
+    hash :personal_pronouns do
+      array :i, default: nil
+      array :you, default: nil
+      array :we, default: nil
+      array :they, default: nil
+      array :he_she, default: nil
     end
     array :interrogatives, default: nil
 
@@ -103,7 +56,7 @@ module Phrases
     end
 
     def data
-      { word: word, en: en, ru: ru, interrogatives: interrogatives }
+      { word: word, en: en, ru: ru, interrogatives: interrogatives, personal_pronouns: personal_pronouns }
     end
   end
 end
