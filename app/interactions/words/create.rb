@@ -7,8 +7,7 @@ module Words
         string :present_you
         string :present_we
         string :present_they
-        string :present_he
-        string :present_she
+        string :present_he_she
         string :past_i
         string :past_you
         string :past_we
@@ -19,8 +18,7 @@ module Words
         string :future_you
         string :future_we
         string :future_they
-        string :future_he
-        string :future_she
+        string :future_he_she
       end
       hash :en do
         string :common
@@ -47,10 +45,19 @@ module Words
     private
 
     def data
-      { ru: wordset['ru'],
-        en: wordset['en'],
-        personal_pronouns: wordset['personal_pronouns'].each { |_k, v| v.delete_at(0) if v.present? },
-        interrogatives: wordset['interrogatives']['interrogatives'][1..-1] }
+      divide_he_she
+      @data = { ru: wordset['ru'],
+                en: wordset['en'],
+                personal_pronouns: wordset['personal_pronouns'].each { |_k, v| v.delete_at(0) if v.present? },
+                interrogatives: wordset['interrogatives']['interrogatives'][1..-1] }
+    end
+
+    def divide_he_she
+      %w(present future).each do |tense|
+        wordset['ru']["#{tense}_he"] = wordset['ru']["#{tense}_he_she"]
+        wordset['ru']["#{tense}_she"] = wordset['ru']["#{tense}_he_she"]
+        wordset['ru'].delete("#{tense}_he_she")
+      end
     end
   end
 end
