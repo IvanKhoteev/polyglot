@@ -2,7 +2,7 @@
 <div id="active_admin_content" class="without_sidebar">
   <div id="main_content_wrapper">
     <div id="main_content">
-      <%= semantic_form_for :wordset, url: word_path do |f| %>
+      <%= semantic_form_for :wordset, url: words_path do |f| %>
         <%= f.inputs 'Word' do %>
           <%= f.input :word %>
         <% end %>
@@ -32,9 +32,8 @@
           <%= ru.input :future_she %>
         <% end %>
         <%= f.inputs 'Personal Pronouns', for: :personal_pronouns do |pronoun| %>
-          <%= pronoun.input :i, as: :check_boxes, collection: pronouns %>
+          <%= pronoun.input :i_we, as: :check_boxes, collection: pronouns %>
           <%= pronoun.input :you, as: :check_boxes, collection: pronouns %>
-          <%= pronoun.input :we, as: :check_boxes, collection: pronouns %>
           <%= pronoun.input :they, as: :check_boxes, collection: pronouns %>
           <%= pronoun.input :he_she, as: :check_boxes, collection: pronouns %>
         <% end %>

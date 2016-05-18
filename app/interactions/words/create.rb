@@ -28,9 +28,8 @@ module Words
         string :specific_past_statement
       end
       hash :personal_pronouns do
-        array :i, default: nil
+        array :i_we, default: nil
         array :you, default: nil
-        array :we, default: nil
         array :they, default: nil
         array :he_she, default: nil
       end
@@ -50,7 +49,7 @@ module Words
     def data
       { ru: wordset['ru'],
         en: wordset['en'],
-        personal_pronouns: wordset['personal_pronouns'].each { |_k, v| v.delete_at(0) },
+        personal_pronouns: wordset['personal_pronouns'].each { |_k, v| v.delete_at(0) if v.present? },
         interrogatives: wordset['interrogatives']['interrogatives'][1..-1] }
     end
   end

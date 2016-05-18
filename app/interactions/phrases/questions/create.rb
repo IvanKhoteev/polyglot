@@ -63,8 +63,8 @@ module Phrases
         interrogatives.each do |interrogative|
           en_interrogative = Interrogative.find_by(ru: interrogative).try(:en)
           next if en_interrogative.blank?
-          word.phrases.create ru: "#{interrogative + ' '}#{phrase.ru}",
-                              en: "#{en_interrogative + ' '}#{phrase.en}",
+          word.phrases.create ru: "#{interrogative + ' '}#{phrase.ru.mb_chars.downcase}",
+                              en: "#{en_interrogative + ' '}#{phrase.en.downcase}",
                               lesson_identifier: 'lesson_2_interrogative'
         end
       end
