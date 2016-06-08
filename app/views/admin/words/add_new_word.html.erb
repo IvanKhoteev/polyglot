@@ -38,6 +38,9 @@
         <%= f.inputs 'Interrogatives', for: :interrogatives do |ru| %>
           <%= ru.input :interrogatives, as: :check_boxes, collection: Interrogative.all.map(&:ru) %>
         <% end %>
+        <%= f.inputs 'Places', for: :places do |pretext| %>
+          <%= pretext.input :pretexts, as: :check_boxes, collection: Place.pluck(:pretext_ru).uniq %>
+        <% end %>
         <%= f.actions do %>
           <%= f.action :submit, :as => :button %>
         <% end %>

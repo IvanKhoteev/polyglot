@@ -7,6 +7,7 @@ ActiveAdmin.register Phrase do
   permit_params :en, :ru, :word_id, :lesson_identifier
 
   index do
+    selectable_column
     id_column
     column :ru
     column :en
@@ -29,4 +30,5 @@ ActiveAdmin.register Phrase do
   filter :lesson_identifier,
          as: :select,
          collection: -> { Phrase.pluck(:lesson_identifier).uniq }
+  filter :ru
 end

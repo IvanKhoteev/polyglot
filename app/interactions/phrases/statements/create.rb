@@ -48,6 +48,7 @@ module Phrases
                                      lesson_identifier: 'lesson_1'
         personal_pronouns = pronouns(input.split('_')[1])
         create_lesson_2_pronoun(phrase, personal_pronouns) if personal_pronouns.present?
+        create_lesson_2_places(phrase, pretexts) if pretexts.present?
       end
 
       def pronouns(key)
@@ -60,6 +61,17 @@ module Phrases
           word.phrases.create ru: "#{phrase.ru} #{personal_pronoun}",
                               en: "#{phrase.en} #{en_whom}",
                               lesson_identifier: 'lesson_2_pronoun'
+        end
+      end
+
+      def create_lesson_2_places(phrase, pretexts)
+        pretexts.each do |pretext|
+          places = Place.where(pretext_ru: pretext)
+          places.each do |place|
+            word.phrases.create ru: "#{phrase.ru} #{place.name_ru}",
+                                en: "#{phrase.en} #{place.pretext_en} #{place.name_en}",
+                                lesson_identifier: 'lesson_2_places'
+          end
         end
       end
     end

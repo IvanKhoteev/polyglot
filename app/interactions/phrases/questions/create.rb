@@ -57,6 +57,7 @@ module Phrases
         create_lesson_2_interrogative(phrase, interrogatives) if interrogatives.present?
         personal_pronouns = pronouns(input.split('_')[1])
         create_lesson_2_pronoun(phrase, personal_pronouns) if personal_pronouns.present?
+        create_lesson_2_places(phrase, pretexts) if pretexts.present?
       end
 
       def create_lesson_2_interrogative(phrase, interrogatives)
@@ -75,6 +76,17 @@ module Phrases
           word.phrases.create ru: "#{phrase.ru[0..-2]} #{personal_pronoun}?",
                               en: "#{phrase.en[0..-2]} #{en_whom}?",
                               lesson_identifier: 'lesson_2_pronoun'
+        end
+      end
+
+      def create_lesson_2_places(phrase, pretexts)
+        pretexts.each do |pretext|
+          places = Place.where(pretext_ru: pretext)
+          places.each do |place|
+            word.phrases.create ru: "#{phrase.ru[0..-2]} #{place.name_ru}?",
+                                en: "#{phrase.en[0..-2]} #{place.pretext_en} #{place.name_en}?",
+                                lesson_identifier: 'lesson_2_places'
+          end
         end
       end
     end

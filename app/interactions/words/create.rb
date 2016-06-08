@@ -34,6 +34,9 @@ module Words
       hash :interrogatives do
         array :interrogatives, default: nil
       end
+      hash :places do
+        array :pretexts, default: nil
+      end
     end
 
     def execute
@@ -48,8 +51,9 @@ module Words
       divide_he_she
       @data = { ru: wordset['ru'],
                 en: wordset['en'],
-                personal_pronouns: wordset['personal_pronouns'].each { |_k, v| v.delete_at(0) if v.present? },
-                interrogatives: wordset['interrogatives']['interrogatives'][1..-1] }
+                personal_pronouns: personal_pronouns,
+                interrogatives: interrogatives,
+                pretexts: pretexts }
     end
 
     def divide_he_she
@@ -58,6 +62,18 @@ module Words
         wordset['ru']["#{tense}_she"] = wordset['ru']["#{tense}_he_she"]
         wordset['ru'].delete("#{tense}_he_she")
       end
+    end
+
+    def interrogatives
+      wordset['interrogatives']['interrogatives'][1..-1]
+    end
+
+    def pretexts
+      wordset['places']['pretexts'][1..-1]
+    end
+
+    def personal_pronouns
+      wordset['personal_pronouns'].each { |_k, v| v.delete_at(0) if v.present? }
     end
   end
 end

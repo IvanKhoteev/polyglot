@@ -33,6 +33,7 @@ module Phrases
       array :he_she, default: nil
     end
     array :interrogatives, default: nil
+    array :pretexts, default: nil
 
     def execute
       create_statements_phrases
@@ -55,7 +56,8 @@ module Phrases
     end
 
     def data
-      { word: word, en: en, ru: ru, interrogatives: interrogatives, personal_pronouns: personal_pronouns }
+      { word: word, en: en, ru: ru, interrogatives: interrogatives,
+        personal_pronouns: personal_pronouns, pretexts: pretexts }
     end
   end
 end

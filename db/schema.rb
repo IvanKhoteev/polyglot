@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516062141) do
+ActiveRecord::Schema.define(version: 20160608121437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 20160516062141) do
   end
 
   add_index "phrases", ["word_id"], name: "index_phrases_on_word_id", using: :btree
+
+  create_table "places", force: :cascade do |t|
+    t.string   "name_ru",    null: false
+    t.string   "name_en",    null: false
+    t.string   "pretext_ru", null: false
+    t.string   "pretext_en", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "words", force: :cascade do |t|
     t.string   "word"
