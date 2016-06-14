@@ -15,6 +15,7 @@ gem 'puma'
 
 # Translate text
 gem 'yandex-translator'
+gem 'espeak-ruby', require: 'espeak'
 
 # Annotate models
 gem 'annotate'

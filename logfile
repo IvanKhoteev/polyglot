@@ -1,0 +1,11 @@
+LOG:  database system was shut down at 2016-06-14 12:23:09 MSK
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "ivan.khoteev" does not exist
+FATAL:  database "hasbro-dohvinci" does not exist
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+FATAL:  terminating connection due to administrator command
+LOG:  shutting down
+LOG:  database system is shut down
