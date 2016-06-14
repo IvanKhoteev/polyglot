@@ -9,6 +9,11 @@ class WordsController < ApplicationController
     redirect_to admin_words_path
   end
 
+  def dic_learn
+    @word = Dictionary.where(status: 'learned').sample
+    @words = Dictionary.where(en: @word.en)
+  end
+
   def learn
     @word = Dictionary.where(status: 'learned').sample
     @language = params[:language]
